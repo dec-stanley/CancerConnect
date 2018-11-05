@@ -1,17 +1,19 @@
 package com.example.decstanley.cancerconnect.Objects;
 import java.util.ArrayList;
+import java.util.Date;
+
 public class Event {
-    private int eventID;
+    private String eventID;
     private String eventTitle;
-    private int eventCreator;
-    private String startDate;
-    private String endDate;
+    private String eventCreator;
+    private Date startDate;
+    private Date endDate;
     private String eventAddress;
     private String eventSummary;
     private boolean inviteOnly;
-    private ArrayList<Integer> peopleAttending;
+    private ArrayList<String> peopleAttending;
 
-    Event(int eventID, int eventCreator, String startDate, String endDate, String eventAddress, String eventSummary, boolean inviteOnly) {
+    Event(String eventID, String eventCreator, Date startDate, Date endDate, String eventAddress, String eventSummary, boolean inviteOnly) {
         this.eventID = eventID;
         this.eventCreator = eventCreator;
         this.startDate = startDate;
@@ -19,15 +21,16 @@ public class Event {
         this.eventAddress = eventAddress;
         this.eventSummary = eventSummary;
         this.inviteOnly = inviteOnly;
+        peopleAttending = new ArrayList();
 
 
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public boolean changeStartDate(String startDate) {
+    public boolean changeStartDate(Date startDate) {
         try {
             this.startDate = startDate;
             return true;
@@ -36,11 +39,11 @@ public class Event {
         }
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public boolean changeEndDate(String endDate) {
+    public boolean changeEndDate(Date endDate) {
         try {
             this.endDate = endDate;
             return true;
@@ -101,7 +104,7 @@ public class Event {
         }
     }
 
-    public boolean addNewPerson(int userID) {
+    public boolean addNewPerson(String userID) {
         try {
             peopleAttending.add(userID);
             return true;
