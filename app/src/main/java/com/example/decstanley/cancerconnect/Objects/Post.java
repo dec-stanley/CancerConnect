@@ -9,6 +9,14 @@ public class Post {
     private ArrayList<String> likes;
     private Comments comments;
 
+    Post(String postID, String userID, String information) {
+        this.postID = postID;
+        this.userID = userID;
+        this.information = information;
+        likes = new ArrayList();
+        comments = new Comments();
+    }
+
     public String getPostID() {
         return this.postID;
     }
