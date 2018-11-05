@@ -21,6 +21,36 @@ public class User {
     // debateable friendRequest
     private ArrayList<User> friendRequest;
 
+
+    public User(String userID, String fullName, String username, String emailAddress, Date dob, boolean active, Date joinDate, ArrayList<Friend> friends, ArrayList<Post> posts, ArrayList<User> friendRequest) {
+        this.userID = userID;
+        this.fullName = fullName;
+        this.username = username;
+        this.emailAddress = emailAddress;
+        this.dob = dob;
+        this.profilePicture = null; //TODO set image to default image
+        this.active = active;
+        this.joinDate = joinDate;
+        this.friends = friends;
+        this.posts = posts;
+        this.friendRequest = friendRequest;
+    }
+
+
+    public User(String userID, String fullName, String username, String emailAddress, Date dob, Image profilePicture, boolean active, Date joinDate, ArrayList<Friend> friends, ArrayList<Post> posts, ArrayList<User> friendRequest) {
+        this.userID = userID;
+        this.fullName = fullName;
+        this.username = username;
+        this.emailAddress = emailAddress;
+        this.dob = dob;
+        this.profilePicture = profilePicture;
+        this.active = active;
+        this.joinDate = joinDate;
+        this.friends = friends;
+        this.posts = posts;
+        this.friendRequest = friendRequest;
+    }
+
     public boolean sendMessage(){
         return false;
     }
