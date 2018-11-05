@@ -18,11 +18,38 @@ public class User {
     private ArrayList<Friend> friends;
     private ArrayList<Post> posts;
 
+    // debateable friendRequest
+    private ArrayList<User> friendRequest;
+
     public boolean sendMessage(){
         return false;
     }
 
-    public boolean reportUser(){
+    public boolean reportUser(User user){
+        try{
+            // try to report user
+
+        }catch(Exception e) {
+            // did ot work
+            return false;
+        }
+        return true;
+    }
+
+    public boolean addFriend(User user){
+        try{
+            // try to add friend to array list
+
+            //add friend to database
+
+        }catch(Exception e) {
+            // did not work
+            return false;
+        }
+        return true;
+    }
+    public boolean acceptFriend(){
         return false;
     }
+
 }
