@@ -31,13 +31,14 @@ public class Events {
         }
     }
 
-    public Event searchEvents(String eventName) {
+    public ArrayList<Event> searchEvents(String eventName) {
+        ArrayList<Event> eventList = new ArrayList();
         for (Event event: events) {
             if (event.getEventTitle().equals(eventName)) {
-                return event;
+                eventList.add(event);
             }
         }
-        return null;
+        return eventList;
     }
     public ArrayList<Event> searchEvents(Date date) {
         ArrayList<Event> eventList = new ArrayList();
@@ -49,7 +50,7 @@ public class Events {
         return eventList;
     }
 
-    public ArrayList<Event> sortEventsDate() {
+    public void sortEventsDate() {
         ArrayList<Date> dates = new ArrayList();
         for (Event event: events) {
             dates.add(event.getStartDate());
@@ -61,6 +62,7 @@ public class Events {
                 events.add(event);
             }
         }
-        return events;
+        this.events = events;
+
     }
 }
