@@ -19,7 +19,7 @@
         app:srcCompat="@android:color/holo_blue_light" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/LoginText"
         android:layout_width="59dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -30,7 +30,7 @@
         tools:layout_editor_absoluteY="216dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/EmailEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -40,7 +40,7 @@
         tools:text="Email Address" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/PasswordEntry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
