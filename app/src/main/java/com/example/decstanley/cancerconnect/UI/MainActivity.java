@@ -1,18 +1,30 @@
 package com.example.decstanley.cancerconnect.UI;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.decstanley.cancerconnect.R;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.entry_screen);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.entry_screen);
 
+        Button button = findViewById(R.id.loginButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                /* Code here executes on main thread after user presses button */
 
+                Intent in2 = new Intent(MainActivity.this, LoginActivity.class);
+
+                startActivity(in2);
+            }
+        });
     }
 }
