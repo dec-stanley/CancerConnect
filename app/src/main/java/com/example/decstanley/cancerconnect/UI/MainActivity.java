@@ -16,15 +16,14 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.entry_screen);
 
-        Button button = findViewById(R.id.loginButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 /* Code here executes on main thread after user presses button */
-
                 Intent in2 = new Intent(MainActivity.this, LoginActivity.class);
-
                 startActivity(in2);
             }
         });
+
     }
 }
