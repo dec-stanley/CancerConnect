@@ -12,8 +12,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@android:color/holo_blue_light" />
 
     <EditText
@@ -28,23 +30,23 @@
         tools:layout_editor_absoluteY="216dp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Email Address"
         tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="471dp" />
+        tools:layout_editor_absoluteY="287dp"
+        tools:text="Email Address" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="Password"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="578dp" />
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="347dp"
+        tools:text="Password" />
 
 </android.support.constraint.ConstraintLayout>

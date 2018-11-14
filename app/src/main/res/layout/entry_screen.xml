@@ -25,7 +25,7 @@
         android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
+        android:layout_marginTop="392dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/holo_red_dark"
         android:text="LOGIN"
@@ -36,27 +36,27 @@
 
     <EditText
         android:id="@+id/LogoText"
-        android:layout_width="114dp"
+        android:layout_width="148dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="APP NAME"
+        android:inputType="none"
+        android:text="Cancer Connect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/backgroundImage"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <Button
         android:id="@+id/RegisterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="460dp"
         android:layout_marginEnd="8dp"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,9 @@
 package com.example.decstanley.cancerconnect.UI;
 
-public class FriendsActivity {
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.example.decstanley.cancerconnect.R;
+
+public class FriendsActivity extends AppCompatActivity{
 }
