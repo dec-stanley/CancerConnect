@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "419259772772",
+    "firebase_url": "https://morrisonhackathon.firebaseio.com",
+    "project_id": "morrisonhackathon",
+    "storage_bucket": "morrisonhackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419259772772:android:a919e485e15cfafb",
+        "android_client_info": {
+          "package_name": "com.example.decstanley.cancerconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419259772772-8t1ehrpv5mei0lo3kjhdjs072c1thji0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.decstanley.cancerconnect",
+            "certificate_hash": "763da08333d5a514eaa812b1e8cefa0595352d26"
+          }
+        },
+        {
+          "client_id": "419259772772-853clglca7hcr3ppf5f8t3rtfrp604mj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYUyo7d-oxk0uEVTJcVDRCJDbyhIUzr2I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419259772772-853clglca7hcr3ppf5f8t3rtfrp604mj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,4 +6,5 @@ import android.os.Bundle;
 import com.example.decstanley.cancerconnect.R;
 
 public class NewsfeedActivity extends AppCompatActivity{
+
 }

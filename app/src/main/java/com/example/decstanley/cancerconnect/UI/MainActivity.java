@@ -8,13 +8,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.decstanley.cancerconnect.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.entry_screen);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.entry_screen);
 
         Button loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -24,6 +26,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(in2);
             }
         });
-
     }
 }
