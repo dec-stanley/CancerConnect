@@ -23,7 +23,7 @@
         tools:srcCompat="@android:color/holo_blue_light" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/RegisterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.337" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

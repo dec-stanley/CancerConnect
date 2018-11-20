@@ -1,16 +1,7 @@
 package com.example.decstanley.cancerconnect.UI;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+public class LoginActivity {
 
-import com.example.decstanley.cancerconnect.R;
+    public void onStart(){}//need to make check if user is already logged in before loading login screen
 
-public class LoginActivity  extends AppCompatActivity {
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_screen);
-    }
 }
