@@ -16,6 +16,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_screen);
         setUpButtonListeners(); // sets up the button listeners
 
+
+        Intent intent = new Intent(LoginActivity.this, EventsActivity.class );
+        startActivity(intent);
     }
 
 

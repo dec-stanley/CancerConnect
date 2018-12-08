@@ -85,6 +85,7 @@
         app:layout_constraintVertical_bias="0.924" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/eventList"
         android:layout_width="352dp"
         android:layout_height="478dp"
         android:layout_marginStart="8dp"

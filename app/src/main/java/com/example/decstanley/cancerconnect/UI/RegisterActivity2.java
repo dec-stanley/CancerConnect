@@ -56,7 +56,7 @@ public class RegisterActivity2 extends AppCompatActivity {
         });
         /*< /Backbutton Listener > */
 
-        Button contButton = (Button)  findViewById(R.id.Sumbit);
+        Button contButton = (Button)  findViewById(R.id.Submit);
         contButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
