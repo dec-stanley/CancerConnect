@@ -33,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
         setUpButtonListeners(); // sets up the button listeners
 
+
+        Intent intent = new Intent(LoginActivity.this, EventsActivity.class );
+        startActivity(intent);
     }
 
     public void login(){
