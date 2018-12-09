@@ -14,8 +14,9 @@ public class Event {
     private boolean inviteOnly;
     private ArrayList<String> peopleAttending;
 
-    public Event(String eventID, String eventCreator, Date startDate, Date endDate, int longitude,int latitude, String eventSummary, boolean inviteOnly) {
+    public Event(String eventID,String eventTitle, String eventCreator, Date startDate, Date endDate, int longitude,int latitude, String eventSummary, boolean inviteOnly) {
         this.eventID = eventID;
+        this.eventTitle = eventTitle;
         this.eventCreator = eventCreator;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -119,5 +120,7 @@ public class Event {
     public int getLongitude(){return longitude;}
 
     public int getLatitude(){return latitude;}
+
+    public String getTitle(){return eventTitle;}
 }
 
