@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
         setUpButtonListeners(); // sets up the button listeners
 
-        Intent i = new Intent(LoginActivity.this , EventsActivity.class);
-        i.putExtra("EMAIL", email.getText().toString());
-        startActivity(i);
+        //Intent i = new Intent(LoginActivity.this , EventsActivity.class);
+        //i.putExtra("EMAIL", email.getText().toString());
+        //startActivity(i);
 
     }
 
