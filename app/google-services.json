@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "419259772772-7qrh5t152a5ngu7u4p42lju85vvpsk6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.decstanley.cancerconnect",
+            "certificate_hash": "9b0bd1095818967d6b382844a378c672a3c89643"
+          }
+        },
+        {
           "client_id": "419259772772-853clglca7hcr3ppf5f8t3rtfrp604mj.apps.googleusercontent.com",
           "client_type": 3
         }

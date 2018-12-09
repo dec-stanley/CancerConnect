@@ -9,7 +9,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +22,6 @@ public class RegisterActivity2 extends AppCompatActivity {
     private EditText phoneNumber;
     private EditText dob;
     private String fullname, password, email;
-
 
     private FirebaseAuth firebaseAuth;
 
@@ -41,7 +42,7 @@ public class RegisterActivity2 extends AppCompatActivity {
         fullname = getIntent().getStringExtra("FULLNAME");
         password = getIntent().getStringExtra("EMAIL");
         email = getIntent().getStringExtra("PASSWORD");
-        
+
     }
 
     // sets up all listeners for the buttons on the activity
@@ -76,13 +77,19 @@ public class RegisterActivity2 extends AppCompatActivity {
 
     // returns if data is entered
     private boolean enterData(){
-        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+
+        Toast.makeText(RegisterActivity2.this, "" + Patterns.EMAIL_ADDRESS.matcher(email).matches(), Toast.LENGTH_LONG * 10).show();
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterActivity2.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(RegisterActivity2.this, "Entered", Toast.LENGTH_LONG * 10).show();
                 }else{
-                    Toast.makeText(RegisterActivity2.this, "NOT", Toast.LENGTH_LONG * 10).show();
+                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                        // user is already signned up
+                    }else{
+                        // it just didnt work
+                    }
                 }
             }
         });
