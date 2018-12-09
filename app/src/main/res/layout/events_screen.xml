@@ -10,9 +10,8 @@
         android:id="@+id/backgroundImage2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
         android:adjustViewBounds="false"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/mybutton3"
         android:contentDescription="@string/backgroundimage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@color/colorPrimary" />
+        app:srcCompat="@drawable/mybutton3" />
 
     <SearchView
         android:id="@+id/searchView"
@@ -45,8 +44,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/transparent"
         android:contentDescription="@string/backbutton"
+        android:tint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
@@ -82,7 +82,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
 
-        android:background="@color/colorPrimary"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/createBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
