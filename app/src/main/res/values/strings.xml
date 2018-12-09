@@ -13,7 +13,7 @@
     <string name="event_postcode">Event Postcode</string>
     <string name="event_title">Event Title</string>
     <string name="create_event">Create Event</string>
-    <string name="time_text">Time Text</string>
+    <string name="time_text">Event Time</string>
     <string name="profilepicture">profilePicture</string>
     <string name="continuelb">Continue</string>
     <string name="fullname">Full Name</string>

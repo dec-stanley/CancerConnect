@@ -16,7 +16,7 @@
         android:contentDescription="@string/backgroundimage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -49,7 +49,7 @@
         android:contentDescription="@string/backbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011"
@@ -64,6 +64,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/mybutton"
+        android:fontFamily="@font/comfortaa_light"
         android:text="@string/create_event"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="@+id/backgroundImage2"
@@ -74,15 +75,16 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/eventList"
-        android:layout_width="352dp"
+        android:layout_width="0dp"
         android:layout_height="423dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/createBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

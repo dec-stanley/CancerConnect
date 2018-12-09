@@ -30,6 +30,7 @@
         android:layout_marginBottom="8dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/comfortaa_light"
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorAccent"
@@ -39,8 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38"
-        tools:targetApi="o"
-        tools:text="Email Address" />
+        tools:targetApi="o" />
 
     <EditText
         android:id="@+id/PasswordEntry"
@@ -51,6 +51,7 @@
         android:layout_marginBottom="41dp"
         android:autofillHints=""
         android:ems="10"
+        android:fontFamily="@font/comfortaa_light"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/colorAccent"
@@ -60,8 +61,7 @@
         app:layout_constraintStart_toStartOf="@+id/backgroundImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.516"
-        tools:targetApi="o"
-        tools:text="Password" />
+        tools:targetApi="o" />
 
     <Button
         android:id="@+id/LoginButton"
@@ -93,7 +93,7 @@
         android:contentDescription="@string/backbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.011"
@@ -107,6 +107,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/electrolize"
         android:text="@string/login"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
