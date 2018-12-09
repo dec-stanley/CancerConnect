@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:color/holo_blue_dark" />
+        app:srcCompat="@color/colorPrimary" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -46,13 +46,15 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="@string/phonenumber"
+        android:importantForAutofill="no"
         android:inputType="phone"
         android:text="@string/phonenumber"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" tools:targetApi="o" />
+        tools:targetApi="o" />
 
     <EditText
         android:id="@+id/DOBEntry"
@@ -64,15 +66,17 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="@string/dobentry"
+        android:importantForAutofill="no"
         android:inputType="date"
         android:text="@string/date_of_birth"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.642"
-        android:importantForAutofill="no" tools:targetApi="o" />
+        tools:targetApi="o" />
 
     <Button
         android:id="@+id/Submit"
@@ -83,6 +87,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="25dp"
         android:text="@string/submit"
+        android:background="@drawable/mybutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -98,12 +103,14 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"
         android:contentDescription="@string/backbutton"
+        android:tint="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.646"
+        app:layout_constraintVertical_bias="0.015"
         app:srcCompat="?android:attr/actionModeCloseDrawable" />
 </android.support.constraint.ConstraintLayout>
