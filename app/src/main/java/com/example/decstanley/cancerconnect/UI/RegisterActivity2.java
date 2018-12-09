@@ -40,8 +40,9 @@ public class RegisterActivity2 extends AppCompatActivity {
 
         // get data from other page and set them to public variables
         fullname = getIntent().getStringExtra("FULLNAME");
-        password = getIntent().getStringExtra("EMAIL");
-        email = getIntent().getStringExtra("PASSWORD");
+        email = getIntent().getStringExtra("EMAIL");
+        password = getIntent().getStringExtra("PASSWORD");
+
 
     }
 
@@ -78,7 +79,7 @@ public class RegisterActivity2 extends AppCompatActivity {
     // returns if data is entered
     private boolean enterData(){
 
-        Toast.makeText(RegisterActivity2.this, "" + Patterns.EMAIL_ADDRESS.matcher(email).matches(), Toast.LENGTH_LONG * 10).show();
+        Toast.makeText(RegisterActivity2.this, email, Toast.LENGTH_LONG * 10).show();
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterActivity2.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
