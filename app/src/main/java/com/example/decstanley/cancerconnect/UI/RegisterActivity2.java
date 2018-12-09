@@ -79,7 +79,6 @@ public class RegisterActivity2 extends AppCompatActivity {
     // returns if data is entered
     private boolean enterData(){
 
-        Toast.makeText(RegisterActivity2.this, email, Toast.LENGTH_LONG * 10).show();
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterActivity2.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
