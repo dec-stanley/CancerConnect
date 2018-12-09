@@ -33,6 +33,10 @@ public class LoginActivity extends AppCompatActivity {
 
         setUpButtonListeners(); // sets up the button listeners
 
+        Intent i = new Intent(LoginActivity.this , EventsActivity.class);
+        i.putExtra("EMAIL", email.getText().toString());
+        startActivity(i);
+
     }
 
     public void login(){
@@ -44,7 +48,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     // take user to events pages
-                    Intent intent  = new Intent(LoginActivity.this, RegisterActivity2.class);
+                    Intent intent  = new Intent(LoginActivity.this, EventsActivity.class);
+                    intent.putExtra("EMAIL", email.getText().toString());
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else{

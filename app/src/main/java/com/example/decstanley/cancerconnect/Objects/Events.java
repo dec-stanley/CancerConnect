@@ -2,6 +2,7 @@ package com.example.decstanley.cancerconnect.Objects;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Date;
 import java.util.Collections;
@@ -40,10 +41,10 @@ public class Events {
         }
         return eventList;
     }
-    public ArrayList<Event> searchEvents(Date date) {
+    public ArrayList<Event> searchEvents(Calendar date) {
         ArrayList<Event> eventList = new ArrayList();
         for (Event event: events) {
-            if (event.getStartDate().equals(date)) {
+            if (event.getStartDateTime().equals(date)) {
                 eventList.add(event);
             }
         }
@@ -51,13 +52,13 @@ public class Events {
     }
 
     public void sortEventsDate() {
-        ArrayList<Date> dates = new ArrayList();
+        ArrayList<Calendar> dates = new ArrayList();
         for (Event event: events) {
-            dates.add(event.getStartDate());
+            dates.add(event.getStartDateTime());
         }
         Collections.sort(dates);
         ArrayList<Event> events = new ArrayList();
-        for (Date date: dates) {
+        for (Calendar date: dates) {
             for (Event event: searchEvents(date)) {
                 events.add(event);
             }
