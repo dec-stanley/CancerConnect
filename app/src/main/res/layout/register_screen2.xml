@@ -71,7 +71,7 @@
         android:fontFamily="@font/comfortaa_light"
         android:hint="@string/date_of_birth"
         android:importantForAutofill="no"
-        android:inputType="date"
+        android:inputType="number"
         android:textColor="@color/colorAccent"
         android:textColorHint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
