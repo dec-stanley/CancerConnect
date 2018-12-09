@@ -61,7 +61,7 @@ public class RegisterActivity1  extends AppCompatActivity {
 
     //Returns if the data entered is valid
     private boolean isValidData(){
-        //TODO - DEC -
+        //TODO - -
         //Validation. get data and check if its valid bblah blah blah return true if all is valid return false if one or more are not valid
         // an example to check if its empty
         if(TextUtils.isEmpty(nameEntry.getText().toString().trim())){
@@ -81,9 +81,9 @@ public class RegisterActivity1  extends AppCompatActivity {
     private void moveToSecondRegisterPage(){
         Intent i = new Intent(RegisterActivity1.this , RegisterActivity2.class);
 
-        i.putExtra("FULLNAME",nameEntry.getText().toString().trim());
-        i.putExtra("EMAIL", emailEntry.getText().toString().trim());
-        i.putExtra("PASSWORD", passwordEntry1.getText().toString().trim());
+        i.putExtra("FULLNAME",nameEntry.getText().toString());
+        i.putExtra("EMAIL", emailEntry.getText().toString());
+        i.putExtra("PASSWORD", passwordEntry1.getText().toString());
 
         startActivity(i);
     }
