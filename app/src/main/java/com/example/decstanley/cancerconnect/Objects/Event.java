@@ -1,5 +1,7 @@
 package com.example.decstanley.cancerconnect.Objects;
 
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 import java.util.Date;
 
 public class Event {
@@ -7,8 +9,8 @@ public class Event {
     private String eventTitle;
     private String eventCreator;
     private Date startDateTime;
-    private int longitude;
-    private int latitude;
+    private double longitude;
+    private double latitude;
     private String address;
     private String town;
     private String county;
@@ -16,9 +18,18 @@ public class Event {
     private String eventSummary;
 
 
-    public Event()
+    public Event(QueryDocumentSnapshot document)
     {
-
+        eventID = document.getId();
+        address = document.getString("Address");
+        county = document.getString("County");
+        latitude = document.getDouble("Latitude");
+        longitude = document.getDouble("Longitude");
+        postcode = document.getString("Postcode");
+        startDateTime = document.getDate("StartDate");
+        eventSummary = document.getString("Summary");
+        eventTitle = document.getString("Title");
+        town = document.getString("Town");
     }
 
 
@@ -35,6 +46,7 @@ public class Event {
         this.postcode = postcode;
         this.eventSummary = eventSummary;
     }
+
 
     public Date getStartDateTime() {
         return startDateTime;
@@ -113,12 +125,14 @@ public class Event {
         }
     }*/
 
-    public int getLongitude(){return longitude;}
+    public double getLongitude(){return longitude;}
 
-    public int getLatitude(){return latitude;}
+    public double getLatitude(){return latitude;}
 
     public String getTitle(){return eventTitle;}
 
     public String getEventID(){return eventID;}
+
+    public String getPostcode(){return postcode;}
 }
 
