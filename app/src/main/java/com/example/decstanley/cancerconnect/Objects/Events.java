@@ -1,9 +1,6 @@
 package com.example.decstanley.cancerconnect.Objects;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
 import java.util.Date;
 import java.util.Collections;
 

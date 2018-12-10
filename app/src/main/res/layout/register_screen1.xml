@@ -175,7 +175,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/electrolize"
-        android:text="REGISTER"
+        android:text="@string/registerCaps"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"

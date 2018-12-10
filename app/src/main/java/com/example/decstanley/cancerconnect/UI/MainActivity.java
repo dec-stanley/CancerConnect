@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.decstanley.cancerconnect.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 

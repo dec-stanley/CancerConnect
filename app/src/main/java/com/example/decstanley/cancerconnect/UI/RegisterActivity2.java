@@ -73,12 +73,7 @@ public class RegisterActivity2 extends AppCompatActivity {
                 if(isValidData()){
                     if(enterData()){
                         moveToEventsActivity();
-                    }else{
-                        //TODO show error messages - DATA WAS NOT ENTERED INTO THE DATABASE
                     }
-
-                }else{
-                    //TODO show error messages - DATA IS NoT VALID
                 }
             }
         });

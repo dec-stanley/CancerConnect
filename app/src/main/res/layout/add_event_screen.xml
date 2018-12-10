@@ -11,6 +11,7 @@
         android:layout_height="0dp"
         android:adjustViewBounds="false"
         android:background="@drawable/mybutton3"
+        android:contentDescription="@string/backgroundimage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -92,7 +93,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <EditText
@@ -152,9 +153,10 @@
                 android:ems="10"
                 android:fontFamily="@font/comfortaa_light"
                 android:textColorHint="@color/colorAccent"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:inputType="textPersonName"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:importantForAutofill="no" tools:targetApi="o" />
 
             <EditText
                 android:id="@+id/townText"
@@ -166,10 +168,12 @@
                 android:layout_marginBottom="8dp"
                 android:ems="10"
                 android:fontFamily="@font/comfortaa_light"
-                android:textColorHint="@color/colorAccent"
-                android:hint="City"
+                android:hint="@string/city"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
+                tools:targetApi="o" />
 
             <EditText
                 android:id="@+id/cityText"
@@ -182,24 +186,10 @@
                 android:ems="10"
                 android:fontFamily="@font/comfortaa_light"
                 android:textColorHint="@color/colorAccent"
-                android:hint="County"
+                android:hint="@string/county"
                 android:inputType="textPersonName"
-                android:textColor="@color/colorAccent" />
-
-            <EditText
-                android:id="@+id/editText4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:textColorHint="@color/colorAccent"
-                android:ems="10"
-                android:fontFamily="@font/comfortaa_light"
-                android:hint="Town"
-                android:inputType="textPersonName"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:importantForAutofill="no" tools:targetApi="o" />
 
             <EditText
                 android:id="@+id/postcodeText"
@@ -250,7 +240,7 @@
                 tools:targetApi="o" />
 
             <CalendarView
-                android:id="@+id/calendarView"
+                android:id="@+id/dateCalendar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

@@ -23,4 +23,12 @@
     <string name="phonenumber">Phone Number</string>
     <string name="dobentry">Age</string>
     <string name="date_of_birth">Age</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="county">County</string>
+    <string name="titletextview">TitleTextView</string>
+    <string name="creatortextview">CreatorTextView</string>
+    <string name="event_summary">Event Summary</string>
+    <string name="events">Events</string>
+    <string name="registerCaps">REGISTER</string>
 </resources>
