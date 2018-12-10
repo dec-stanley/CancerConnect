@@ -21,7 +21,7 @@ public class EventListAdapter extends
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView titleTextView;
-        public TextView creatorTextView;
+        public TextView addressTextView;
         public TextView dateTextView;
         public TextView summaryTextView;
 
@@ -35,7 +35,7 @@ public class EventListAdapter extends
             super(itemView);
 
             titleTextView = (TextView) itemView.findViewById(R.id.title_textview);
-            creatorTextView = (TextView) itemView.findViewById(R.id.creator_textview);
+            addressTextView = (TextView) itemView.findViewById(R.id.address_textview);
             dateTextView = (TextView) itemView.findViewById(R.id.date_textview);
             summaryTextView = (TextView) itemView.findViewById(R.id.summary_textview);
 
@@ -76,8 +76,9 @@ public class EventListAdapter extends
         TextView titleTextView = viewHolder.titleTextView;
         titleTextView.setText(event.getTitle());
 
-        TextView creatorTextView = viewHolder.creatorTextView;
-        creatorTextView.setText(event.getEventID());
+
+        TextView addressTextView = viewHolder.addressTextView;
+        addressTextView.setText(event.getEventAddress());
 
         TextView dateTextView = viewHolder.dateTextView;
         dateTextView.setText(event.getStartDateTime().toString());

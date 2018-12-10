@@ -31,4 +31,5 @@
     <string name="event_summary">Event Summary</string>
     <string name="events">Events</string>
     <string name="registerCaps">REGISTER</string>
+    <string name="refreshbutton">RefreshButton</string>
 </resources>

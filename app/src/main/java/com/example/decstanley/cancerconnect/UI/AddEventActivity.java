@@ -1,6 +1,7 @@
 package com.example.decstanley.cancerconnect.UI;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,7 +16,15 @@ import com.example.decstanley.cancerconnect.Objects.Event;
 import com.example.decstanley.cancerconnect.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +38,11 @@ public class AddEventActivity extends AppCompatActivity{
 
     private String email;
     private DatabaseReference databaseRef;
+    private double latitude;
+    private double longitude;
+
+    private String titleText, descText, addressText, townText, countyText, postcodeText;
+    private Date dateTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,30 +69,28 @@ public class AddEventActivity extends AppCompatActivity{
             public void onClick(View v) {
 
                 EditText titleEditText = (EditText) findViewById(R.id.titleText);
-                String titleText = titleEditText.getText().toString();
+                titleText = titleEditText.getText().toString();
 
                 EditText descEditText = (EditText) findViewById(R.id.descText);
-                String descText = descEditText.getText().toString();
+                descText = descEditText.getText().toString();
 
                 EditText addressEditText = (EditText) findViewById(R.id.addressText);
-                String addressText = addressEditText.getText().toString();
+                addressText = addressEditText.getText().toString();
 
                 EditText townEditText = (EditText) findViewById(R.id.cityText);
-                String townText = townEditText.getText().toString();
+                townText = townEditText.getText().toString();
 
                 EditText countyEditText = (EditText) findViewById(R.id.countyText);
-                String countyText = countyEditText.getText().toString();
+                countyText = countyEditText.getText().toString();
                 EditText postcodeEditText = (EditText) findViewById(R.id.postcodeText);
-                String postcodeText = postcodeEditText.getText().toString().toUpperCase();
+                postcodeText = postcodeEditText.getText().toString().toUpperCase();
 
                 EditText timeEditText = (EditText) findViewById(R.id.timeText);
                 CalendarView dateCalendarView = (CalendarView) findViewById(R.id.dateCalendar);
 
-
-
                 String timeStr = timeEditText.getText().toString();
                 DateFormat formatter = new SimpleDateFormat("hh::mm:ss");
-                Date dateTime;
+
                 dateTime = new Date();
                 dateTime.setTime(0);
                 try {
@@ -91,85 +103,19 @@ public class AddEventActivity extends AppCompatActivity{
                 //Date time = dateTime;
 
                 dateTime.setTime(dateTime.getTime() + dateCalendarView.getDate());
-                //Calendar dateTime = Calendar.getInstance();
 
-                /*String timeStr = timeEditText.getText().toString();
-                DateFormat formatter = new SimpleDateFormat("hh::mm:ss a");
-                Date time;
-                time = new Date();
-                time.setTime(0);
-                try {
-                    time = formatter.parse(timeStr);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                latitude = 0.0;
+                longitude = 0.0;
 
-                dateTime.setTimeInMillis(dateCalendarView.getDate() + time.getTime());*/
+                String url = getGeoLoactionUrl(addressText + " " + townText + countyText + " " + postcodeText);
+                getFromGoogle(url);
 
-
-
-
-
-                writeNewEvent(email, titleText, dateTime, 2 , 3 , addressText, townText, countyText, postcodeText, descText);
-                //add to database
-
-                if(TextUtils.isEmpty(titleText)){
-                    Toast.makeText(AddEventActivity.this, "Please enter an event title", Toast.LENGTH_LONG * 10).show();
-                }
-                else {
-                    if (TextUtils.isEmpty(descText)) {
-                        Toast.makeText(AddEventActivity.this, "Please enter an event description", Toast.LENGTH_LONG * 10).show();
-                    }
-                    else {
-                        if (TextUtils.isEmpty(addressText)) {
-                            Toast.makeText(AddEventActivity.this, "Please enter an event address", Toast.LENGTH_LONG * 10).show();
-                        }
-                        else {
-                            if (TextUtils.isEmpty(townText)) {
-                                Toast.makeText(AddEventActivity.this, "Please enter an event town", Toast.LENGTH_LONG * 10).show();
-                            }
-                            else {
-                                if (TextUtils.isEmpty(descText)) {
-                                    Toast.makeText(AddEventActivity.this, "Please enter an event description", Toast.LENGTH_LONG * 10).show();
-                                }
-                                else {
-                                    if (TextUtils.isEmpty(countyText)) {
-                                        Toast.makeText(AddEventActivity.this, "Please enter an event county", Toast.LENGTH_LONG * 10).show();
-                                    }
-                                    else {
-                                        if (TextUtils.isEmpty(postcodeText)) {
-                                            Toast.makeText(AddEventActivity.this, "Please enter an event postcode", Toast.LENGTH_LONG * 10).show();
-                                        }
-                                        else {
-                                            if (TextUtils.isEmpty(postcodeText)) {
-                                                Toast.makeText(AddEventActivity.this, "Please enter an event postcode", Toast.LENGTH_LONG * 10).show();
-                                            }
-                                            final String EMAIL_PATTERN = "^([A-PR-UWYZ](([0-9](([0-9]|[A-HJKSTUW])?)?)|([A-HK-Y][0-9]([0-9]|[ABEHMNPRVWXY])?)) ?[0-9][ABD-HJLNP-UW-Z]{2})$";
-                                            Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-                                            CharSequence inputStr = postcodeText;
-                                            Matcher matcher = pattern.matcher(inputStr);
-                                            if(matcher.matches()){
-                                                Intent i = new Intent(AddEventActivity.this , EventsActivity.class);
-                                                i.putExtra("EMAIL", email);
-                                                startActivity(i);
-                                            }
-                                            else{
-                                                Toast.makeText(AddEventActivity.this, "Please enter a valid postcode", Toast.LENGTH_LONG * 10).show();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
-                    }
-                }
 
             }
         });
     }
 
-    public void writeNewEvent(String eventID,String eventTitle, Date startDateTime, int longitude,int latitude,String address,String town,String county,String postcode, String eventSummary)
+    public void writeNewEvent(String eventID,String eventTitle, Date startDateTime, double longitude,double latitude,String address,String town,String county,String postcode, String eventSummary)
     {
         Event event = new Event(eventID, eventTitle, startDateTime, longitude, latitude, address, town, county, postcode, eventSummary);
 
@@ -196,6 +142,128 @@ public class AddEventActivity extends AppCompatActivity{
 
 
 
+    }
+
+
+    private String getGeoLoactionUrl(String parameters) {
+
+        parameters = "address="+parameters;
+        parameters = parameters.replace(" ", "+");
+        // json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+        String output = "json";
+
+        String key = "key=AIzaSyCCpKVPOewpYzagdPgsLghkX3BLzn4Lt34";
+
+        return "https://maps.googleapis.com/maps/api/geocode/"+output+"?" + parameters + "&" + key;
+
+    }
+
+
+    public void getFromGoogle(String url){
+        double[] latlong = new double[2];
+        final String newURL = url;
+
+        AsyncTask async = new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                OkHttpClient client = new OkHttpClient();
+
+                Request request = new Request.Builder()
+                        .url(newURL)
+                        .build();
+
+                Response response = null;
+
+                try{
+                    response = client.newCall(request).execute();
+                    return response.body().string();
+                }catch(IOException e){
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Object o) {
+                parseJSON(o.toString());
+
+            }
+        }.execute();
+    }
+
+    private void parseJSON(String s){
+
+        try {
+            JSONObject root = new JSONObject(s);
+
+            JSONArray results = root.getJSONArray("results");
+
+            JSONObject hh = results.getJSONObject(0);
+            JSONObject ko = hh.getJSONObject("geometry");
+            JSONObject location = ko.getJSONObject("location");
+
+            latitude = location.getDouble("lat");
+            longitude = location.getDouble("lng");
+
+            writeNewEvent(email, titleText, dateTime, longitude , latitude , addressText, townText, countyText, postcodeText, descText);
+            //add to database
+
+            if(TextUtils.isEmpty(titleText)){
+                Toast.makeText(AddEventActivity.this, "Please enter an event title", Toast.LENGTH_LONG * 10).show();
+            }
+            else {
+                if (TextUtils.isEmpty(descText)) {
+                    Toast.makeText(AddEventActivity.this, "Please enter an event description", Toast.LENGTH_LONG * 10).show();
+                }
+                else {
+                    if (TextUtils.isEmpty(addressText)) {
+                        Toast.makeText(AddEventActivity.this, "Please enter an event address", Toast.LENGTH_LONG * 10).show();
+                    }
+                    else {
+                        if (TextUtils.isEmpty(townText)) {
+                            Toast.makeText(AddEventActivity.this, "Please enter an event town", Toast.LENGTH_LONG * 10).show();
+                        }
+                        else {
+                            if (TextUtils.isEmpty(descText)) {
+                                Toast.makeText(AddEventActivity.this, "Please enter an event description", Toast.LENGTH_LONG * 10).show();
+                            }
+                            else {
+                                if (TextUtils.isEmpty(countyText)) {
+                                    Toast.makeText(AddEventActivity.this, "Please enter an event county", Toast.LENGTH_LONG * 10).show();
+                                }
+                                else {
+                                    if (TextUtils.isEmpty(postcodeText)) {
+                                        Toast.makeText(AddEventActivity.this, "Please enter an event postcode", Toast.LENGTH_LONG * 10).show();
+                                    }
+                                    else {
+                                        if (TextUtils.isEmpty(postcodeText)) {
+                                            Toast.makeText(AddEventActivity.this, "Please enter an event postcode", Toast.LENGTH_LONG * 10).show();
+                                        }
+                                        final String EMAIL_PATTERN = "^([A-PR-UWYZ](([0-9](([0-9]|[A-HJKSTUW])?)?)|([A-HK-Y][0-9]([0-9]|[ABEHMNPRVWXY])?)) ?[0-9][ABD-HJLNP-UW-Z]{2})$";
+                                        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+                                        CharSequence inputStr = postcodeText;
+                                        Matcher matcher = pattern.matcher(inputStr);
+                                        if(matcher.matches()){
+                                            Intent i = new Intent(AddEventActivity.this , EventsActivity.class);
+                                            i.putExtra("EMAIL", email);
+                                            startActivity(i);
+                                        }
+                                        else{
+                                            Toast.makeText(AddEventActivity.this, "Please enter a valid postcode", Toast.LENGTH_LONG * 10).show();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }

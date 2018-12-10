@@ -16,6 +16,7 @@ public class Event {
     private String county;
     private String postcode;
     private String eventSummary;
+    private double distance;
 
 
     public Event(QueryDocumentSnapshot document)
@@ -30,10 +31,11 @@ public class Event {
         eventSummary = document.getString("Summary");
         eventTitle = document.getString("Title");
         town = document.getString("Town");
+        distance = -1;
     }
 
 
-    public Event(String eventID,String eventTitle, Date startDateTime, int longitude,int latitude,String address,String town,String county,String postcode, String eventSummary) {
+    public Event(String eventID,String eventTitle, Date startDateTime, double longitude,double latitude,String address,String town,String county,String postcode, String eventSummary) {
         this.eventID = eventID;
         this.eventTitle = eventTitle;
         this.eventCreator = eventCreator;
@@ -45,6 +47,7 @@ public class Event {
         this.county = county;
         this.postcode = postcode;
         this.eventSummary = eventSummary;
+        distance = -1;
     }
 
 
@@ -125,6 +128,19 @@ public class Event {
         }
     }*/
 
+    public void setDistance(double currLat, double currLong)
+    {
+        double dLat = Math.toRadians(latitude - currLat);
+        double dLon = Math.toRadians(longitude - currLong);
+        currLat = Math.toRadians(currLat);
+        latitude = Math.toRadians(latitude);
+
+        double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLon / 2),2) * Math.cos(currLat) * Math.cos(latitude);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        distance = 6372.8 * c;
+    }
+
+
     public double getLongitude(){return longitude;}
 
     public double getLatitude(){return latitude;}
@@ -134,5 +150,8 @@ public class Event {
     public String getEventID(){return eventID;}
 
     public String getPostcode(){return postcode;}
+
+    public double getDistance(){return distance;}
 }
+
 

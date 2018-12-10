@@ -71,11 +71,7 @@ public class EventsActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        Event ev;
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            ev = new Event(document);
-                            events.addEvent(ev);
-                        }
+
                         double currLat, currLong;
                         try {
                             currLat = location.getLatitude();
@@ -84,6 +80,12 @@ public class EventsActivity extends AppCompatActivity {
                             currLat = 54.176629;
                             currLong = -2.021484;
 
+                        }
+
+                        Event ev;
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            ev = new Event(document);
+                            events.addEvent(ev);
                         }
 
                         events.sortEventsDistance(currLat, currLong);
@@ -96,7 +98,6 @@ public class EventsActivity extends AppCompatActivity {
 
                         }
                         });
-        Toast.makeText(EventsActivity.this, String.valueOf(events.getEvents().size()), Toast.LENGTH_LONG * 10).show();
 
 
 
@@ -127,6 +128,14 @@ public class EventsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(EventsActivity.this , LoginActivity.class);
+                startActivity(i);
+            }
+        });
+
+        ImageButton refreshButton = findViewById(R.id.refreshButton);
+        refreshButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent i = new Intent(EventsActivity.this , EventsActivity.class);
                 startActivity(i);
             }
         });
