@@ -3,6 +3,7 @@ package com.example.decstanley.cancerconnect.UI;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -21,6 +22,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddEventActivity extends AppCompatActivity{
 
@@ -65,9 +68,8 @@ public class AddEventActivity extends AppCompatActivity{
 
                 EditText countyEditText = (EditText) findViewById(R.id.countyText);
                 String countyText = countyEditText.getText().toString();
-
                 EditText postcodeEditText = (EditText) findViewById(R.id.postcodeText);
-                String postcodeText = postcodeEditText.getText().toString();
+                String postcodeText = postcodeEditText.getText().toString().toUpperCase();
 
                 EditText timeEditText = (EditText) findViewById(R.id.timeText);
                 CalendarView dateCalendarView = (CalendarView) findViewById(R.id.dateCalendar);
@@ -111,11 +113,58 @@ public class AddEventActivity extends AppCompatActivity{
                 writeNewEvent(email, titleText, dateTime, 2 , 3 , addressText, townText, countyText, postcodeText, descText);
                 //add to database
 
+                if(TextUtils.isEmpty(titleText)){
+                    Toast.makeText(AddEventActivity.this, "Please enter an event title", Toast.LENGTH_LONG * 10).show();
+                }
+                else {
+                    if (TextUtils.isEmpty(descText)) {
+                        Toast.makeText(AddEventActivity.this, "Please enter an event description", Toast.LENGTH_LONG * 10).show();
+                    }
+                    else {
+                        if (TextUtils.isEmpty(addressText)) {
+                            Toast.makeText(AddEventActivity.this, "Please enter an event address", Toast.LENGTH_LONG * 10).show();
+                        }
+                        else {
+                            if (TextUtils.isEmpty(townText)) {
+                                Toast.makeText(AddEventActivity.this, "Please enter an event town", Toast.LENGTH_LONG * 10).show();
+                            }
+                            else {
+                                if (TextUtils.isEmpty(descText)) {
+                                    Toast.makeText(AddEventActivity.this, "Please enter an event description", Toast.LENGTH_LONG * 10).show();
+                                }
+                                else {
+                                    if (TextUtils.isEmpty(countyText)) {
+                                        Toast.makeText(AddEventActivity.this, "Please enter an event county", Toast.LENGTH_LONG * 10).show();
+                                    }
+                                    else {
+                                        if (TextUtils.isEmpty(postcodeText)) {
+                                            Toast.makeText(AddEventActivity.this, "Please enter an event postcode", Toast.LENGTH_LONG * 10).show();
+                                        }
+                                        else {
+                                            if (TextUtils.isEmpty(postcodeText)) {
+                                                Toast.makeText(AddEventActivity.this, "Please enter an event postcode", Toast.LENGTH_LONG * 10).show();
+                                            }
+                                            final String EMAIL_PATTERN = "^([A-PR-UWYZ](([0-9](([0-9]|[A-HJKSTUW])?)?)|([A-HK-Y][0-9]([0-9]|[ABEHMNPRVWXY])?)) ?[0-9][ABD-HJLNP-UW-Z]{2})$";
+                                            Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+                                            CharSequence inputStr = postcodeText;
+                                            Matcher matcher = pattern.matcher(inputStr);
+                                            if(matcher.matches()){
+                                                Intent i = new Intent(AddEventActivity.this , EventsActivity.class);
+                                                i.putExtra("EMAIL", email);
+                                                startActivity(i);
+                                            }
+                                            else{
+                                                Toast.makeText(AddEventActivity.this, "Please enter a valid postcode", Toast.LENGTH_LONG * 10).show();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
 
+                        }
+                    }
+                }
 
-                Intent i = new Intent(AddEventActivity.this , EventsActivity.class);
-                i.putExtra("EMAIL", email);
-                startActivity(i);
             }
         });
     }
