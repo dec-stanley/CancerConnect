@@ -60,7 +60,7 @@ public class AddEventActivity extends AppCompatActivity{
                 EditText addressEditText = (EditText) findViewById(R.id.addressText);
                 String addressText = addressEditText.getText().toString();
 
-                EditText townEditText = (EditText) findViewById(R.id.townText);
+                EditText townEditText = (EditText) findViewById(R.id.cityText);
                 String townText = townEditText.getText().toString();
 
                 EditText countyEditText = (EditText) findViewById(R.id.countyText);
