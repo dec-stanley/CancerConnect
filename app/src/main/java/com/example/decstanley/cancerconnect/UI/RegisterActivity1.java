@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 import com.example.decstanley.cancerconnect.R;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterActivity1  extends AppCompatActivity {
 
     private EditText nameEntry;
@@ -65,8 +68,35 @@ public class RegisterActivity1  extends AppCompatActivity {
         //Validation. get data and check if its valid bblah blah blah return true if all is valid return false if one or more are not valid
         // an example to check if its empty
         if(TextUtils.isEmpty(nameEntry.getText().toString().trim())){
-            Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG * 10).show();
+            Toast.makeText(this, "Please enter your name", Toast.LENGTH_LONG * 10).show();
+            return false;
         }
+        if(TextUtils.isEmpty(emailEntry.getText().toString().trim())){
+            Toast.makeText(this, "Please enter your email address", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
+        if(TextUtils.isEmpty(passwordEntry1.getText().toString().trim())){
+            Toast.makeText(this, "Please enter your password", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
+        if(TextUtils.isEmpty(passwordEntry2.getText().toString().trim())){
+            Toast.makeText(this, "Please enter your password", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
+        if(!(passwordEntry1.getText().toString().trim().equals(passwordEntry2.getText().toString().trim()))) {
+            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Z    Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        CharSequence inputStr = emailEntry.getText().toString().trim();
+        Matcher matcher = pattern.matcher(inputStr);
+        if(!(matcher.matches()))
+        {
+            Toast.makeText(this, "Invalid email format", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
+
 
         return true;
     }

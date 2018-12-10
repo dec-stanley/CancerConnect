@@ -11,12 +11,20 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
+import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
+
 
 public class RegisterActivity2 extends AppCompatActivity {
     private EditText phoneNumber;
@@ -64,7 +72,7 @@ public class RegisterActivity2 extends AppCompatActivity {
                 // Code here executes on main thread after user presses button
                 if(isValidData()){
                     if(enterData()){
-                        // move user to the feed activity
+                        moveToEventsActivity();
                     }else{
                         //TODO show error messages - DATA WAS NOT ENTERED INTO THE DATABASE
                     }
@@ -100,6 +108,21 @@ public class RegisterActivity2 extends AppCompatActivity {
     private boolean isValidData(){
         //TODO - DEC -
         //Validation. get data and check if its valid bblah blah blah return true if all is valid return false if one or more are not valid
+        if(TextUtils.isEmpty(phoneNumber.getText().toString().trim())){
+            Toast.makeText(this, "Please enter your phone number", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
+        int thing=0;
+        try{
+            thing = Integer.parseInt(dob.getText().toString().trim());
+        } catch (Exception e) {
+            Toast.makeText(this, "Please enter your age in the correct format", Toast.LENGTH_LONG * 10).show();
+        }
+
+        if((TextUtils.isEmpty(dob.getText().toString().trim()))||((thing<13))){
+            Toast.makeText(this, "You are too young for this application", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
         return true;
     }
 
@@ -110,6 +133,9 @@ public class RegisterActivity2 extends AppCompatActivity {
         startActivity(i);
     }
 
-
+    private void moveToEventsActivity(){
+        Intent i = new Intent(RegisterActivity2.this , EventsActivity.class);
+        startActivity(i);
+    }
 
 }

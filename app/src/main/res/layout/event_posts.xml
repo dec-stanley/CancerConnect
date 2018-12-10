@@ -3,49 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/background_light"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
 
     <TextView
         android:id="@+id/title_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@drawable/mybutton"
+        android:fontFamily="@font/electrolize"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="TitleTextView"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/creator_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@drawable/alternatemybutton"
+        android:fontFamily="@font/comfortaa_light"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="CreatorTextView"
-        android:textAlignment="center" />
+        android:textAlignment="textStart"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/date_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@drawable/mybutton"
         android:ems="10"
+        android:fontFamily="@font/comfortaa_light"
         android:inputType="date"
-        android:textAlignment="center" />
+        android:text="@string/event_date"
+        android:textAlignment="textEnd"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/summary_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@drawable/alternatemybutton"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="Event Summary"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark" />
 
 
 </LinearLayout>

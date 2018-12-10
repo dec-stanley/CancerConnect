@@ -10,6 +10,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,12 +49,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     // take user to events pages
-                    Intent intent  = new Intent(LoginActivity.this, EventsActivity.class);
-                    intent.putExtra("EMAIL", email.getText().toString());
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    moveToEventsActivity();
                 }else{
-                    Toast.makeText(LoginActivity.this, "not", Toast.LENGTH_LONG * 10).show();
+                    Toast.makeText(LoginActivity.this, "Your email and password are invalid", Toast.LENGTH_LONG * 10).show();
                 }
             }
         });
@@ -77,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(isValidData()){
                     login();
                 }else{
-                    //TODO show error messages - DATA IS NoT VALID
+                    Toast.makeText(LoginActivity.this, "Your email and password are invalid", Toast.LENGTH_LONG * 10).show();
                 }
             }
         });
@@ -85,8 +83,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isValidData(){
-        //TODO - DEC -
-        //Validation. get data and check if its valid bblah blah blah return true if all is valid return false if one or more are not valid
+        if(TextUtils.isEmpty(email.getText().toString().trim())){
+            Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
+        if(TextUtils.isEmpty(password.getText().toString().trim())){
+            Toast.makeText(this, "Please enter your password", Toast.LENGTH_LONG * 10).show();
+            return false;
+        }
         return true;
     }
 
@@ -94,6 +98,12 @@ public class LoginActivity extends AppCompatActivity {
     //takes the user back to the main activity
     private void backToMainActivity(){
         Intent i = new Intent(LoginActivity.this , MainActivity.class);
+        startActivity(i);
+    }
+    private void moveToEventsActivity(){
+        Intent i = new Intent(LoginActivity.this , EventsActivity.class);
+        i.putExtra("EMAIL", email.getText().toString());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
 }
