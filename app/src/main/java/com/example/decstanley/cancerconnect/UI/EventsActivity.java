@@ -53,11 +53,11 @@ public class EventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_screen);
         email = getIntent().getStringExtra("EMAIL");
+        ActivityCompat.requestPermissions(EventsActivity.this, new String[]{ACCESS_FINE_LOCATION}, 1);
         if (ActivityCompat.checkSelfPermission(EventsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(EventsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
 
-        ActivityCompat.requestPermissions(EventsActivity.this, new String[]{ACCESS_FINE_LOCATION}, 1);
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         final Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
@@ -65,11 +65,6 @@ public class EventsActivity extends AppCompatActivity {
         Calendar testDateTime = null;
 
         events = new Events();
-        ArrayList<Event> eventsArr = new ArrayList();
-        for (int i = 1; i <= 10; i++) {
-            //events.add(new Event("TEST" + i, "USER1","TEST EVENT", testDateTime, 20, 30, "First test event for recyclerview"));
-        }
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Events")
                 .get()
@@ -81,9 +76,15 @@ public class EventsActivity extends AppCompatActivity {
                             ev = new Event(document);
                             events.addEvent(ev);
                         }
+                        double currLat, currLong;
+                        try {
+                            currLat = location.getLatitude();
+                            currLong = location.getLongitude();}
+                        catch (Exception e) {
+                            currLat = 54.176629;
+                            currLong = -2.021484;
 
-                        double currLat = location.getLatitude();
-                        double currLong = location.getLongitude();
+                        }
 
                         events.sortEventsDistance(currLat, currLong);
 
