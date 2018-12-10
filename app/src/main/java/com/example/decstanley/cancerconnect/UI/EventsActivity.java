@@ -37,7 +37,7 @@ public class EventsActivity extends AppCompatActivity{
         events = new ArrayList<Event>();
 
         for (int i = 1; i <= 10; i++) {
-            events.add(new Event("TEST" + i, "USER1","TEST EVENT", testDateTime, 20, 30, "First test event for recyclerview"));
+            //events.add(new Event("TEST" + i, "USER1","TEST EVENT", testDateTime, 20, 30, "First test event for recyclerview"));
         }
 
 

@@ -41,7 +41,7 @@ public class Events {
         }
         return eventList;
     }
-    public ArrayList<Event> searchEvents(Calendar date) {
+    public ArrayList<Event> searchEvents(Date date) {
         ArrayList<Event> eventList = new ArrayList();
         for (Event event: events) {
             if (event.getStartDateTime().equals(date)) {
@@ -52,13 +52,13 @@ public class Events {
     }
 
     public void sortEventsDate() {
-        ArrayList<Calendar> dates = new ArrayList();
+        ArrayList<Date> dates = new ArrayList();
         for (Event event: events) {
             dates.add(event.getStartDateTime());
         }
         Collections.sort(dates);
         ArrayList<Event> events = new ArrayList();
-        for (Calendar date: dates) {
+        for (Date date: dates) {
             for (Event event: searchEvents(date)) {
                 events.add(event);
             }

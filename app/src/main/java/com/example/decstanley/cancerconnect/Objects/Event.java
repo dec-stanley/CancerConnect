@@ -1,40 +1,46 @@
 package com.example.decstanley.cancerconnect.Objects;
-import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.Date;
 
 public class Event {
     private String eventID;
     private String eventTitle;
     private String eventCreator;
-    private Calendar startDateTime;
+    private Date startDateTime;
     private int longitude;
     private int latitude;
     private String address;
     private String town;
-    private String city;
     private String county;
     private String postcode;
     private String eventSummary;
 
-    public Event(String eventID,String eventTitle, String eventCreator, Calendar startDateTime, int longitude,int latitude, String eventSummary) {
+
+    public Event()
+    {
+
+    }
+
+
+    public Event(String eventID,String eventTitle, Date startDateTime, int longitude,int latitude,String address,String town,String county,String postcode, String eventSummary) {
         this.eventID = eventID;
         this.eventTitle = eventTitle;
         this.eventCreator = eventCreator;
         this.startDateTime = startDateTime;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.address = address;
+        this.town = town;
+        this.county = county;
+        this.postcode = postcode;
         this.eventSummary = eventSummary;
-
-
-
     }
 
-    public Calendar getStartDateTime() {
+    public Date getStartDateTime() {
         return startDateTime;
     }
 
-    public boolean changeStartDateTime(Calendar startDateTime) {
+    public boolean changeStartDateTime(Date startDateTime) {
         try {
             this.startDateTime = startDateTime;
             return true;
@@ -70,19 +76,19 @@ public class Event {
         }
     }
 
-/*    public String getEventAddress() {
-        return eventAddress;
+    public String getEventAddress() {
+        return address;
     }
 
     public boolean changeEventAddress(String eventAddress) {
         try {
-            this.eventAddress = eventAddress;
+            this.address = eventAddress;
             return true;
         } catch (Exception e) {
             return false;
         }
     }
-*/
+
 
     public String getEventSummary() {
         return eventSummary;
@@ -96,6 +102,7 @@ public class Event {
             return false;
         }
     }
+
 
 /*    public boolean addNewPerson(String userID) {
         try {
@@ -111,5 +118,7 @@ public class Event {
     public int getLatitude(){return latitude;}
 
     public String getTitle(){return eventTitle;}
+
+    public String getEventID(){return eventID;}
 }
 

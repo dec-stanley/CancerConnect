@@ -149,13 +149,13 @@ public class EventListAdapter extends
         titleTextView.setText(event.getTitle());
 
         TextView creatorTextView = viewHolder.creatorTextView;
-        titleTextView.setText(event.getTitle());
+        creatorTextView.setText(event.getEventID());
 
         TextView dateTextView = viewHolder.dateTextView;
-        titleTextView.setText(event.getTitle());
+        dateTextView.setText(event.getStartDateTime().toString());
 
         TextView summaryTextView = viewHolder.summaryTextView;
-        titleTextView.setText(event.getTitle());
+        summaryTextView.setText(event.getEventSummary());
 
 
 }
