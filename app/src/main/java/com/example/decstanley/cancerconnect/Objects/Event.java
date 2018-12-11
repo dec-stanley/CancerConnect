@@ -122,6 +122,10 @@ public class Event {
     public String getPostcode(){return postcode;}
 
     public double getDistance(){return distance;}
+
+    public String getTown(){return town;}
+
+    public String getCounty(){return county;}
 }
 
 
