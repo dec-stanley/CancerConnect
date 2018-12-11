@@ -61,7 +61,7 @@ public class Events {
         return eventList;
     }
 
-    public void sortEventsDate() {
+/*    public void sortEventsDate() {
         ArrayList<Date> dates = new ArrayList();
         for (Event event: events) {
             dates.add(event.getStartDateTime());
@@ -74,7 +74,7 @@ public class Events {
             }
         }
         this.events = events;
-    }
+    }*/
 
     public void sortEventsDistance(double currLat, double currLong) {
         ArrayList<String> locations = new ArrayList();

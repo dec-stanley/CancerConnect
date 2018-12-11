@@ -8,7 +8,8 @@ public class Event {
     private String eventID;
     private String eventTitle;
     private String eventCreator;
-    private Date startDateTime;
+    private String startDate;
+    private String startTime;
     private double longitude;
     private double latitude;
     private String address;
@@ -27,7 +28,8 @@ public class Event {
         latitude = document.getDouble("Latitude");
         longitude = document.getDouble("Longitude");
         postcode = document.getString("Postcode");
-        startDateTime = document.getDate("StartDate");
+        startDate = document.getString("StartDate");
+        startTime = document.getString("StartTime");
         eventSummary = document.getString("Summary");
         eventTitle = document.getString("Title");
         town = document.getString("Town");
@@ -35,11 +37,12 @@ public class Event {
     }
 
 
-    public Event(String eventID,String eventTitle, Date startDateTime, double longitude,double latitude,String address,String town,String county,String postcode, String eventSummary) {
+    public Event(String eventID,String eventTitle, String startDate, String startTime, double longitude,double latitude,String address,String town,String county,String postcode, String eventSummary) {
         this.eventID = eventID;
         this.eventTitle = eventTitle;
         this.eventCreator = eventCreator;
-        this.startDateTime = startDateTime;
+        this.startDate = startDate;
+        this.startTime = startTime;
         this.longitude = longitude;
         this.latitude = latitude;
         this.address = address;
@@ -51,13 +54,15 @@ public class Event {
     }
 
 
-    public Date getStartDateTime() {
-        return startDateTime;
+    public String getStartDateTime() {
+        return startDate;
     }
 
-    public boolean changeStartDateTime(Date startDateTime) {
+    public String getStartTime(){return startTime; }
+
+    public boolean changeStartDateTime(String startDateTime) {
         try {
-            this.startDateTime = startDateTime;
+            this.startDate = startDate;
             return true;
         } catch (Exception e) {
             return false;

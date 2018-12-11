@@ -81,7 +81,7 @@ public class EventListAdapter extends
         addressTextView.setText(event.getEventAddress());
 
         TextView dateTextView = viewHolder.dateTextView;
-        dateTextView.setText(event.getStartDateTime().toString());
+        dateTextView.setText(event.getStartDateTime() + " " + event.getStartTime());
 
         TextView summaryTextView = viewHolder.summaryTextView;
         summaryTextView.setText(event.getEventSummary());

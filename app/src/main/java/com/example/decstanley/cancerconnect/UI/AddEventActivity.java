@@ -1,6 +1,7 @@
 package com.example.decstanley.cancerconnect.UI;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -42,15 +44,20 @@ public class AddEventActivity extends AppCompatActivity{
     private double longitude;
 
     private String titleText, descText, addressText, townText, countyText, postcodeText;
-    private Date dateTime;
+    private String dateTime;
 
+    private String timeStr;
+
+    private static String dateee = "nothing";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_event_screen);
         email = getIntent().getStringExtra("EMAIL");
         setUpButtonListeners(); // sets up the button listeners
+
     }
+
 
     private void setUpButtonListeners(){
 
@@ -63,6 +70,16 @@ public class AddEventActivity extends AppCompatActivity{
             }
         });
         /*< /Back button Listener > */
+
+        CalendarView dateCalendarView = (CalendarView) findViewById(R.id.dateCalendar);
+        dateCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            //show the selected date as a toast
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
+                Toast.makeText(getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
+                dateee = day +"/" + month +"/" + year;
+            }
+        });
 
         Button createButton = findViewById(R.id.createButton);
         createButton.setOnClickListener(new View.OnClickListener() {
@@ -88,21 +105,18 @@ public class AddEventActivity extends AppCompatActivity{
                 EditText timeEditText = (EditText) findViewById(R.id.timeText);
                 CalendarView dateCalendarView = (CalendarView) findViewById(R.id.dateCalendar);
 
-                String timeStr = timeEditText.getText().toString();
-                DateFormat formatter = new SimpleDateFormat("hh::mm:ss");
 
-                dateTime = new Date();
-                dateTime.setTime(0);
-                try {
+                timeStr = timeEditText.getText().toString();
+                // DateFormat formatter = new SimpleDateFormat("hh::mm", Locale.getDefault());
+
+                /*try {
                     dateTime = formatter.parse(timeStr);
                 } catch (ParseException e) {
                     e.printStackTrace();
-                }
-                Toast.makeText(AddEventActivity.this, String.valueOf(dateTime.getTime()), Toast.LENGTH_LONG * 100).show();
-
-                //Date time = dateTime;
-
-                dateTime.setTime(dateTime.getTime() + dateCalendarView.getDate());
+                    Toast.makeText(AddEventActivity.this, "Couldn't parse", Toast.LENGTH_LONG * 100).show();
+                    dateTime = new Date();
+                }*/
+                Toast.makeText(AddEventActivity.this, String.valueOf(dateCalendarView.getDate()), Toast.LENGTH_LONG * 100).show();
 
                 latitude = 0.0;
                 longitude = 0.0;
@@ -112,12 +126,14 @@ public class AddEventActivity extends AppCompatActivity{
 
 
             }
+
+
         });
     }
 
-    public void writeNewEvent(String eventID,String eventTitle, Date startDateTime, double longitude,double latitude,String address,String town,String county,String postcode, String eventSummary)
+    public void writeNewEvent(String eventID,String eventTitle, String startDateTime, String time, double longitude,double latitude,String address,String town,String county,String postcode, String eventSummary)
     {
-        Event event = new Event(eventID, eventTitle, startDateTime, longitude, latitude, address, town, county, postcode, eventSummary);
+        Event event = new Event(eventID, eventTitle, startDateTime,time, longitude, latitude, address, town, county, postcode, eventSummary);
 
         FirebaseFirestore database = FirebaseFirestore.getInstance();
 
@@ -128,6 +144,7 @@ public class AddEventActivity extends AppCompatActivity{
         Map<String, Object> newEvent = new HashMap<>();
         newEvent.put("Title", eventTitle);
         newEvent.put("StartDate", startDateTime);
+        newEvent.put("StartTime", time);
         newEvent.put("Longitude", longitude);
         newEvent.put("Latitude", latitude);
         newEvent.put("Address", address);
@@ -205,8 +222,10 @@ public class AddEventActivity extends AppCompatActivity{
             latitude = location.getDouble("lat");
             longitude = location.getDouble("lng");
 
-            writeNewEvent(email, titleText, dateTime, longitude , latitude , addressText, townText, countyText, postcodeText, descText);
+
+            writeNewEvent(email, titleText, dateee, timeStr, longitude , latitude , addressText, townText, countyText, postcodeText, descText);
             //add to database
+
 
             if(TextUtils.isEmpty(titleText)){
                 Toast.makeText(AddEventActivity.this, "Please enter an event title", Toast.LENGTH_LONG * 10).show();
