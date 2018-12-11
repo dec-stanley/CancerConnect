@@ -77,7 +77,7 @@ public class AddEventActivity extends AppCompatActivity{
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int day) {
                 Toast.makeText(getApplicationContext(), day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
-                dateee = day +"/" + month +"/" + year;
+                dateee = day +"/" + (month + 1) +"/" + year;
             }
         });
 

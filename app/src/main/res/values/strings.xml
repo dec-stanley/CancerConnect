@@ -4,7 +4,7 @@
     <string name="backbutton">backButton</string>
     <string name="imagebutton">imageButton</string>
     <string name="register">Register</string>
-    <string name="cancer_connect">CANCER CONNECT</string>
+    <string name="connect">CONNECT</string>
     <string name="login">LOGIN</string>
     <string name="email_address">Email Address</string>
     <string name="event_time">Event Time</string>

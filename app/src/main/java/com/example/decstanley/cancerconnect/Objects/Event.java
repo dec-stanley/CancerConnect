@@ -69,19 +69,6 @@ public class Event {
         }
     }
 
-/*    public Date getEndDate() {
-        return endDate;
-    }
-
-    public boolean changeEndDate(Date endDate) {
-        try {
-            this.endDate = endDate;
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-*/
 
     public String getEventTitle() {
         return eventTitle;
@@ -121,28 +108,6 @@ public class Event {
         } catch (Exception e) {
             return false;
         }
-    }
-
-
-/*    public boolean addNewPerson(String userID) {
-        try {
-            peopleAttending.add(userID);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }*/
-
-    public void setDistance(double currLat, double currLong)
-    {
-        double dLat = Math.toRadians(latitude - currLat);
-        double dLon = Math.toRadians(longitude - currLong);
-        currLat = Math.toRadians(currLat);
-        latitude = Math.toRadians(latitude);
-
-        double a = Math.pow(Math.sin(dLat / 2),2) + Math.pow(Math.sin(dLon / 2),2) * Math.cos(currLat) * Math.cos(latitude);
-        double c = 2 * Math.asin(Math.sqrt(a));
-        distance = 6372.8 * c;
     }
 
 
